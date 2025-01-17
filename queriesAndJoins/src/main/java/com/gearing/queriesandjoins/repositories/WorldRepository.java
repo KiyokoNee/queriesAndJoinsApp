@@ -20,10 +20,10 @@ public interface WorldRepository extends CrudRepository<Country, Long> {
 			+ "ORDER BY percentage DESC")
 	List<Object[]> allSpeakSlovene();
 	
-	@Query(nativeQuery = true, value = "SELECT name, COUNT(*) as count " 
-			+ "FROM countries INNER JOIN languages "
-			+ "ON countries.id = languages.country_id "
-			+ "GROUP BY name "
+	@Query(nativeQuery = true, value = "SELECT countries.name, COUNT(*) as count " 
+			+ "FROM countries INNER JOIN cities "
+			+ "ON countries.id = cities.country_id "
+			+ "GROUP BY countries.name "
 			+ "ORDER BY count DESC")
 	List<Object[]> countOfCitiesByCountry();
 	
